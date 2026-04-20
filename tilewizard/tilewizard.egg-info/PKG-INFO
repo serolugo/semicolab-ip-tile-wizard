@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: tilewizard
+Version: 1.0.0
+Summary: SemiCoLab IP Tile Wizard V1 — wraps generic RTL into SemiCoLab tiles.
+Author: 
+Requires-Python: >=3.10

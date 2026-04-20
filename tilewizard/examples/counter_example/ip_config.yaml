@@ -1,0 +1,47 @@
+# ─────────────────────────────────────────────
+# TileWizard — ip_config.yaml
+# Generado por: tilewizard parse
+# ─────────────────────────────────────────────
+
+ip_tile_name: counter
+top_module:   counter
+description:  "Simple 32-bit up-counter with synchronous load and overflow flag."
+author:       "SemiCoLab / Mifral"
+version:      "1.0.0"
+
+# ─────────────────────────────────────────────
+# MAPEO DE PUERTOS
+# Formato: <puerto_ip>: <puerto_tile>[slice_opcional]
+#
+# ENTRADAS disponibles:
+#   clk                  — reloj del sistema
+#   arst_n               — reset asíncrono activo en bajo
+#   data_reg_a[31:0]     — registro de datos de entrada A (32 bits)
+#   data_reg_b[31:0]     — registro de datos de entrada B (32 bits)
+#
+#   csr_in[15:0]         — registro de control de entrada, 3 zonas:
+#     csr_in[15:12]      — SINGLE PULSE: se activan un ciclo y se limpian solos
+#                          ideal para disparar instrucciones o comandos
+#     csr_in[11:4]       — STABLE: mantienen su valor hasta que Python los cambie
+#                          ideal para condiciones, modos o parámetros
+#     csr_in[3:0]        — CLEAR ON READ: se limpian cuando el circuito lee el dato
+#                          ideal para órdenes que confirman recepción
+#
+# SALIDAS disponibles:
+#   data_reg_c[31:0]     — registro de datos de salida (32 bits)
+#   csr_in_re            — pulso que indica que el tile leyó csr_in
+#   csr_out_we           — pulso que indica que el tile escribió csr_out
+#
+#   csr_out[15:0]        — registro de control de salida, 2 zonas:
+#     csr_out[15:4]      — STABLE: flags o valores de salida, mantienen su valor
+#     csr_out[3:0]       — CLEAR ON READ: indicadores que se limpian al ser leídos
+#                          por la interfaz Python
+# ─────────────────────────────────────────────
+
+ports:
+  clk:      clk
+  rst_n:    arst_n
+  load_val: data_reg_a
+  load_en:  csr_in[0]
+  count:    data_reg_c
+  overflow: csr_out[0]
