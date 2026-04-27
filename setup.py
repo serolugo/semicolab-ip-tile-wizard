@@ -5,7 +5,8 @@ setup(
     version="1.0.0",
     description="SemiCoLab IP Tile Wizard V1 — wraps generic RTL into SemiCoLab tiles.",
     author="",
-    packages=find_packages(),
+    package_dir={"": "tilewizard"},
+    packages=find_packages("tilewizard"),
     include_package_data=True,
     package_data={
         "tilewizard": ["templates/*.j2", "templates/*.yaml"],
